@@ -11,3 +11,4 @@ The program should run and return the name aswell as the sentnace in which the n
     - trafilatura==1.3.0
     - nltk==3.7
     - spacy==3.3.1
+    - validators==0.20.0
