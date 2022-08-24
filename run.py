@@ -6,15 +6,13 @@ import string
 import trafilatura
 from spacy import displacy
 import en_core_web_sm
-import validators
-import time
 nlp = en_core_web_sm.load()
 
 lowerCaseAlphabetlist = list(string.ascii_lowercase)
 
 def main():
     # urlOfInitialWebsiteToScrap = input("Enter the URL you wish to scrape: ")
-    urlOfInitialWebsiteToScrap = "https://news.google.com/search?q=%22norwich%20station%22%20%22greater%20anglia%22%20%22manager%22&hl=en-GB&gl=GB&ceid=GB%3Aen"
+    urlOfInitialWebsiteToScrap = "https://www.independent.co.uk/travel/news-and-advice/eurostar-kent-ashford-ebbsfleet-brexit-b2150948.html"
     listOfUrlsToVisit = getsListOfURLsToVisit(urlOfInitialWebsiteToScrap)
     listOfNameAndSentances = []
     for url in listOfUrlsToVisit:
@@ -33,7 +31,7 @@ def getsListOfURLsToVisit(urlOfInitialWebsiteToScrap):
     tags = doc.find_all('a')
     for i in range(len(tags)):
         subURl = (tags[i].get('href'))
-        if subURl[0:4] ==  "http":
+        if subURl != None:
             listOfUrlsToVisit.append(subURl)
     return (listOfUrlsToVisit)
 
